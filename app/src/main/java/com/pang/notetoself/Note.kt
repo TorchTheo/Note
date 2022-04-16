@@ -2,6 +2,9 @@ package com.pang.notetoself
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.pang.notetoself.utils.Utils
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -25,6 +28,21 @@ class Note {
     private val JSON_IMPORTANT = "important"
     private val JSON_TIME = "time"
 
+    private inner class notifierTask(val note: Note): TimerTask() {
+        override fun run() {
+            var builder = NotificationCompat.Builder(Utils.getApplicationContext(), Utils.CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("In the note:")
+                .setContentText(("This is a good day!"))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            with(NotificationManagerCompat.from(Utils.getApplicationContext())) {
+                notify(Utils.getNotifyID(), builder.build())
+            }
+        }
+
+    }
+
     @Throws(JSONException::class)
     constructor(jo: JSONObject) {
         title = jo.getString(JSON_TITLE)
@@ -33,9 +51,13 @@ class Note {
         time = jo.getString(JSON_TIME)
 
         d_time = timePattern.parse(time!!)
+
+        Timer().schedule(notifierTask(this), Date())
     }
 
-    constructor() {}
+    constructor() {
+        Timer().schedule(notifierTask(this), Date())
+    }
 
     @Throws(JSONException::class)
     fun convert2JSON(): JSONObject {

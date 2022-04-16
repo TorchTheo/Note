@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pang.notetoself.databinding.ActivityMainBinding
+import com.pang.notetoself.utils.Utils
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     private var showDividers: Boolean = false
 
-    private val CHANNEL_ID: String = "TODO-List-Channel"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,16 +80,17 @@ class MainActivity : AppCompatActivity() {
 
 //        Toast.makeText(this, "onCreate called, showDividers is $showDividers", Toast.LENGTH_SHORT).show()
 
+        Utils.setApplicationContext(applicationContext)
         createNotificationChannel()
 
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        var builder = NotificationCompat.Builder(this, Utils.CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Hello world!")
             .setContentText(("This is a good day!"))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(this)) {
-            notify(10086, builder.build())
+            notify(Utils.getNotifyID(), builder.build())
         }
 
 
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             val name = getString(R.string.channel_name)
             val descriptionText = getString(R.string.channel_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+            val channel = NotificationChannel(Utils.CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
             // Register the channel with the system
