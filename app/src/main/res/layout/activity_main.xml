@@ -20,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_dark"
+            android:background="@color/color1"
             app:popupTheme="@style/Theme.NoteToSelf.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
