@@ -49,6 +49,8 @@ class NoteAdapter(
             } else {
                 holder.itemView.setBackgroundResource(R.drawable.radius_check_no)
             }
+            (noteList as ArrayList).sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
+
         }
 
         holder.todo.isChecked = note.done
