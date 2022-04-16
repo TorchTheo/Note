@@ -19,8 +19,8 @@ class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
 //        val checkBoxIdea = dialogView.findViewById<CheckBox>(R.id.checkBoxIdea)
 //        val checkBoxTodo = dialogView.findViewById<CheckBox>(R.id.checkBoxTodo)
 //        val checkBoxImportant = dialogView.findViewById<CheckBox>(R.id.checkBoxImportant)
-        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
-        val btnNewOK = dialogView.findViewById<Button>(R.id.btnNewOK)
+        val btnCancel = dialogView.findViewById<ImageButton>(R.id.btnCancel)
+        val btnNewOK = dialogView.findViewById<ImageButton>(R.id.btnNewOK)
 
         builder.setView(dialogView).setMessage("Add a new note")
 

@@ -3,7 +3,7 @@ package com.pang.notetoself
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -21,8 +21,8 @@ class DialogEditNote(val note: Note, val adapter: NoteAdapter): DialogFragment()
 //        val checkBoxIdea = dialogView.findViewById<CheckBox>(R.id.checkBoxIdea)
 //        val checkBoxTodo = dialogView.findViewById<CheckBox>(R.id.checkBoxTodo)
 //        val checkBoxImportant = dialogView.findViewById<CheckBox>(R.id.checkBoxImportant)
-        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
-        val btnNewOK = dialogView.findViewById<Button>(R.id.btnNewOK)
+        val btnCancel = dialogView.findViewById<ImageButton>(R.id.btnCancel)
+        val btnNewOK = dialogView.findViewById<ImageButton>(R.id.btnNewOK)
         editTitle.setText(note.title)
         editDescription.setText(note.des)
         editTime.setText(note.time)
