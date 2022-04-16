@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 
 class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
@@ -24,6 +25,7 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
         val showTime = dialogView.findViewById<TextView>(R.id.showTime)
 
         val editNote = dialogView.findViewById<Button>(R.id.editNote)
+        val deleteNote = dialogView.findViewById<Button>(R.id.deleteNode)
 
         txtDescription.setMovementMethod(ScrollingMovementMethod.getInstance())
 
@@ -44,6 +46,23 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
             val dialog = DialogEditNote(note!!, adapter)
             this.fragmentManager?.let { it1 -> dialog.show(it1, "123") }
             dismiss()
+        }
+
+        val callingActivity = activity as MainActivity?
+        deleteNote.setOnClickListener {
+            AlertDialog.Builder(activity)
+                .setMessage(getString(R.string.delete_message))
+                .setPositiveButton(getString(R.string.yes)) {_, _ ->
+                    callingActivity!!.deleteNote(note!!)
+                    if(isAdded) {
+                        Toast.makeText(callingActivity, getString(R.string.delete_done), Toast.LENGTH_LONG).show()
+                    }
+                    dismiss()
+                }
+                .setNegativeButton(getString(R.string.no)) {_, _ ->
+//                    dismiss()
+                }
+                .show()
         }
 
         return builder.create()

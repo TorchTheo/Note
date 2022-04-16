@@ -105,6 +105,12 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
+    fun deleteNote(n: Note) {
+        noteList!!.remove(n)
+        noteList!!.sortBy { note -> note.d_time }
+        adapter!!.notifyDataSetChanged()
+    }
+
     fun updateNote() {
         noteList!!.sortBy { note -> note.d_time }
         adapter!!.notifyDataSetChanged()
