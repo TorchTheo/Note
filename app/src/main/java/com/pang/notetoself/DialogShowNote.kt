@@ -24,8 +24,8 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
         val txtDescription = dialogView.findViewById<TextView>(R.id.txtDescription)
         val showTime = dialogView.findViewById<TextView>(R.id.showTime)
 
-        val editNote = dialogView.findViewById<Button>(R.id.editNote)
-        val deleteNote = dialogView.findViewById<Button>(R.id.deleteNode)
+        val editNote = dialogView.findViewById<ImageButton>(R.id.editNote)
+        val deleteNote = dialogView.findViewById<ImageButton>(R.id.deleteNode)
 
         txtDescription.setMovementMethod(ScrollingMovementMethod.getInstance())
 

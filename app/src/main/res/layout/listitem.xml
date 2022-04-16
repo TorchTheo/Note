@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="TextView"
-            android:textColor="@color/color6" />
+            android:textColor="@color/color6"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <TextView
@@ -35,7 +36,7 @@
         android:ellipsize="end"
         android:maxEms="15"
         android:singleLine="true"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/briefTime"
