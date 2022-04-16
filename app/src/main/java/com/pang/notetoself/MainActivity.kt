@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("Error loading notes: ", "", e)
         }
 
-        noteList!!.sortBy { note -> note.d_time }
+        noteList!!.sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
 
         recyclerView = findViewById(R.id.recyclerView)
 
@@ -105,14 +105,20 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
-    fun updateNote() {
+    fun deleteNote(n: Note) {
+        noteList!!.remove(n)
         noteList!!.sortBy { note -> note.d_time }
+        adapter!!.notifyDataSetChanged()
+    }
+
+    fun updateNote() {
+        noteList!!.sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
         adapter!!.notifyDataSetChanged()
     }
 
     fun createNewNote(n: Note) {
         noteList!!.add(n)
-        noteList!!.sortBy { note -> note.d_time }
+        noteList!!.sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
         adapter!!.notifyDataSetChanged()
     }
 

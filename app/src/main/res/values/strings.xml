@@ -23,4 +23,8 @@
     <string name="theme_light" translatable="false">Light</string>
     <string name="theme_dark" translatable="false">Dark</string>
     <string name="todo_list">Todo-Lists</string>
+    <string name="delete_message">Do you really want to delete this Todo?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_done">Todo has been delete successfully!</string>
 </resources>
