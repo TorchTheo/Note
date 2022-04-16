@@ -38,7 +38,7 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
 
         val btnShowOK = dialogView.findViewById<ImageButton>(R.id.btnShowOk)
 
-        builder.setView(dialogView).setMessage("Your TODO")
+        builder.setView(dialogView)
         btnShowOK.setOnClickListener{dismiss()}
         editNote.setOnClickListener {
             val dialog = DialogEditNote(note!!, adapter)
