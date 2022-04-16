@@ -50,6 +50,7 @@ class DialogNewNote : DialogFragment() {
             }
             if(editTime.text.toString() != "") {
                 newNote.time = editTime.text.toString()
+                newNote.d_time = newNote.timePattern.parse(newNote.time!!)
             } else {
                 Toast.makeText(this.context, "Time can't be empty", Toast.LENGTH_LONG).show()
                 return@setOnClickListener

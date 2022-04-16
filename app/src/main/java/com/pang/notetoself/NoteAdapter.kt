@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,7 +16,8 @@ class NoteAdapter(
 //        internal var description = view.findViewById<TextView>(R.id.textViewDescription)
 //        internal var status = view.findViewById<TextView>(R.id.textViewStatus)
         internal var todo = view.findViewById<CheckBox>(R.id.todo)
-        internal var des = view.findViewById<TextView>(R.id.showDes)
+        internal var des = view.findViewById<TextView>(R.id.briefDes)
+        internal var time = view.findViewById<TextView>(R.id.briefTime)
 
         init {
             view.isClickable = true
@@ -40,6 +40,7 @@ class NoteAdapter(
         val note = noteList[position]
         holder.title.text = note.title
         holder.des.text = note.des
+        holder.time.text = note.time
         holder.todo.setOnCheckedChangeListener { compoundButton, isChecked ->
             note.done = isChecked
             // TODO: 更改复选框

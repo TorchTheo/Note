@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity() {
             Log.e("Error loading notes: ", "", e)
         }
 
+        noteList!!.sortBy { note -> note.d_time }
+
         recyclerView = findViewById(R.id.recyclerView)
 
         adapter = NoteAdapter(this, noteList!!)
@@ -104,6 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     fun createNewNote(n: Note) {
         noteList!!.add(n)
+        noteList!!.sortBy { note -> note.d_time }
         adapter!!.notifyDataSetChanged()
     }
 

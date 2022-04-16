@@ -1,13 +1,22 @@
 package com.pang.notetoself
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class Note {
     var title: String? = null
     var done: Boolean = false
     var des: String? = null
     var time: String? = null
+    var d_time: Date? = null
+
+    val timePattern = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     private val JSON_TITLE = "title"
     private val JSON_DESCRIPTION = "description"
@@ -22,6 +31,8 @@ class Note {
         done = jo.getBoolean(JSON_DONE)
         des = jo.getString(JSON_DESCRIPTION)
         time = jo.getString(JSON_TIME)
+
+        d_time = timePattern.parse(time!!)
     }
 
     constructor() {}

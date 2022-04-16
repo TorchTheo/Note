@@ -26,11 +26,15 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/showDes"
+        android:id="@+id/briefDes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="48sp"
-        android:maxLines="1"
         android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/briefTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
