@@ -61,6 +61,8 @@ class DialogEditNote(val note: Note, val adapter: NoteAdapter): DialogFragment()
             }
             note.des = editDescription.text.toString()
 
+            note.refreshTask()
+
             val callingActivity = activity as MainActivity?
 
             callingActivity!!.updateNote()

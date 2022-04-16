@@ -1,15 +1,11 @@
 package com.pang.notetoself
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.pang.notetoself.utils.Utils
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class Note {
@@ -40,8 +36,9 @@ class Note {
                 notify(Utils.getNotifyID(), builder.build())
             }
         }
-
     }
+
+    private var notifier_task: notifierTask = notifierTask(this)
 
     @Throws(JSONException::class)
     constructor(jo: JSONObject) {
@@ -52,11 +49,12 @@ class Note {
 
         d_time = timePattern.parse(time!!)
 
-        Timer().schedule(notifierTask(this), Date())
+//        Timer().schedule(notifier_task, Date())
+        createTask()
     }
 
     constructor() {
-        Timer().schedule(notifierTask(this), Date())
+//        Timer().schedule(notifierTask(this), Date())
     }
 
     @Throws(JSONException::class)
@@ -67,5 +65,22 @@ class Note {
         jo.put(JSON_DESCRIPTION, des)
         jo.put(JSON_TIME, time)
         return jo
+    }
+
+    fun createTask() {
+        if (!done) {
+            notifier_task = notifierTask(this)
+            Timer().schedule(notifier_task, d_time)
+        }
+    }
+
+    fun removeTask() {
+        notifier_task.cancel()
+        Timer().purge()
+    }
+
+    fun refreshTask() {
+        removeTask()
+        createTask()
     }
 }

@@ -83,15 +83,15 @@ class MainActivity : AppCompatActivity() {
         Utils.setApplicationContext(applicationContext)
         createNotificationChannel()
 
-        var builder = NotificationCompat.Builder(this, Utils.CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Hello world!")
-            .setContentText(("This is a good day!"))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        with(NotificationManagerCompat.from(this)) {
-            notify(Utils.getNotifyID(), builder.build())
-        }
+//        var builder = NotificationCompat.Builder(this, Utils.CHANNEL_ID)
+//            .setSmallIcon(R.drawable.ic_launcher_foreground)
+//            .setContentTitle("Hello world!")
+//            .setContentText(("This is a good day!"))
+//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//
+//        with(NotificationManagerCompat.from(this)) {
+//            notify(Utils.getNotifyID(), builder.build())
+//        }
 
 
         recyclerView!!.adapter = adapter

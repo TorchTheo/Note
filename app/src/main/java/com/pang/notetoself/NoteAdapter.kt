@@ -51,6 +51,7 @@ class NoteAdapter(
             }
             (noteList as ArrayList).sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
 
+            note.refreshTask()
         }
 
         holder.todo.isChecked = note.done
