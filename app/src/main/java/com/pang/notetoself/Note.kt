@@ -6,6 +6,7 @@ import org.json.JSONObject
 class Note {
     var title: String? = null
     var done: Boolean = false
+    var des: String? = null
 
     private val JSON_TITLE = "title"
     private val JSON_DESCRIPTION = "description"
@@ -17,6 +18,7 @@ class Note {
     constructor(jo: JSONObject) {
         title = jo.getString(JSON_TITLE)
         done = jo.getBoolean(JSON_DONE)
+        des = jo.getString(JSON_DESCRIPTION)
     }
 
     constructor() {}
@@ -26,6 +28,7 @@ class Note {
         val jo = JSONObject()
         jo.put(JSON_TITLE, title)
         jo.put(JSON_DONE, done)
+        jo.put(JSON_DESCRIPTION, des)
         return jo
     }
 }

@@ -3,21 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:animateLayoutChanges="false"
     android:background="@drawable/radius_check_no"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/todo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TextView"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="324dp"
+        android:id="@+id/showDes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="TextView"
-        android:textSize="24sp" />
+        android:layout_marginStart="48sp"
+        android:textSize="18dp" />
 
 </LinearLayout>

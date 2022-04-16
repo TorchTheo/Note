@@ -31,6 +31,7 @@ class DialogNewNote : DialogFragment() {
         btnNewOK.setOnClickListener {
             val newNote = Note()
             newNote.title = editTitle.text.toString()
+            newNote.des = editDescription.text.toString()
 
             val callingActivity = activity as MainActivity?
 

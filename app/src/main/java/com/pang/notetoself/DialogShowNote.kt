@@ -21,6 +21,7 @@ class DialogShowNote : DialogFragment() {
         val txtDescription = dialogView.findViewById<TextView>(R.id.txtDescription)
 
         txtTitle.text = note!!.title
+        txtDescription.text = note!!.des
 
 //        val txtImportant = dialogView.findViewById<TextView>(R.id.textViewImportant)
 //        val txtTodo = dialogView.findViewById<TextView>(R.id.textViewTodo)
