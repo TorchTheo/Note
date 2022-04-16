@@ -1,12 +1,10 @@
 package com.pang.notetoself
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
-import androidx.core.text.toSpannable
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteAdapter(
@@ -41,10 +39,11 @@ class NoteAdapter(
         holder.title.text = note.title
         holder.todo.setOnCheckedChangeListener { compoundButton, isChecked ->
             note.done = isChecked
+            // TODO: 更改复选框
             if (isChecked) {
-                holder.itemView.setBackgroundColor(Color.GRAY)
+                holder.itemView.setBackgroundResource(R.drawable.radius_check_yes)
             } else {
-                holder.itemView.setBackgroundColor(Color.WHITE)
+                holder.itemView.setBackgroundResource(R.drawable.radius_check_no)
             }
         }
 
