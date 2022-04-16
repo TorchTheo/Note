@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="@drawable/radius_check_no"
+    android:background="@color/color3"
     android:orientation="vertical">
 
     <LinearLayout
