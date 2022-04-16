@@ -3,6 +3,7 @@ package com.pang.notetoself
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -21,6 +22,8 @@ class DialogShowNote : DialogFragment() {
         val txtTitle = dialogView.findViewById<TextView>(R.id.txtTitle)
         val txtDescription = dialogView.findViewById<TextView>(R.id.txtDescription)
         val showTime = dialogView.findViewById<TextView>(R.id.showTime)
+
+        txtDescription.setMovementMethod(ScrollingMovementMethod.getInstance())
 
         txtTitle.text = note!!.title
         txtDescription.text = note!!.des
