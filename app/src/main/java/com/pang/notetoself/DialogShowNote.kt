@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 
@@ -19,16 +20,18 @@ class DialogShowNote : DialogFragment() {
 
         val txtTitle = dialogView.findViewById<TextView>(R.id.txtTitle)
         val txtDescription = dialogView.findViewById<TextView>(R.id.txtDescription)
+        val showTime = dialogView.findViewById<TextView>(R.id.showTime)
 
         txtTitle.text = note!!.title
         txtDescription.text = note!!.des
+        showTime.text = note!!.time
 
 //        val txtImportant = dialogView.findViewById<TextView>(R.id.textViewImportant)
 //        val txtTodo = dialogView.findViewById<TextView>(R.id.textViewTodo)
 //        val txtIdea = dialogView.findViewById<TextView>(R.id.textViewIdea)
 
 
-        val btnShowOK = dialogView.findViewById<Button>(R.id.btnShowOk)
+        val btnShowOK = dialogView.findViewById<ImageButton>(R.id.btnShowOk)
 
         builder.setView(dialogView).setMessage("Your Note")
         btnShowOK.setOnClickListener{dismiss()}
