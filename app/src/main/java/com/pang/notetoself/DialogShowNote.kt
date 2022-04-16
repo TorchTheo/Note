@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 
-class DialogShowNote : DialogFragment() {
+class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
 
     private var note: Note? = null
 
@@ -22,6 +22,8 @@ class DialogShowNote : DialogFragment() {
         val txtTitle = dialogView.findViewById<TextView>(R.id.txtTitle)
         val txtDescription = dialogView.findViewById<TextView>(R.id.txtDescription)
         val showTime = dialogView.findViewById<TextView>(R.id.showTime)
+
+        val editNote = dialogView.findViewById<Button>(R.id.editNote)
 
         txtDescription.setMovementMethod(ScrollingMovementMethod.getInstance())
 
@@ -36,8 +38,13 @@ class DialogShowNote : DialogFragment() {
 
         val btnShowOK = dialogView.findViewById<ImageButton>(R.id.btnShowOk)
 
-        builder.setView(dialogView).setMessage("Your Note")
+        builder.setView(dialogView).setMessage("Your TODO")
         btnShowOK.setOnClickListener{dismiss()}
+        editNote.setOnClickListener {
+            val dialog = DialogEditNote(note!!, adapter)
+            this.fragmentManager?.let { it1 -> dialog.show(it1, "123") }
+            dismiss()
+        }
 
         return builder.create()
     }

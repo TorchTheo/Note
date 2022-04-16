@@ -7,7 +7,7 @@ import android.widget.*
 import androidx.fragment.app.DialogFragment
 import java.sql.Time
 
-class DialogNewNote : DialogFragment() {
+class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
         val inflater = requireActivity().layoutInflater

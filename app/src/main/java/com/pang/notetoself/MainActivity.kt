@@ -46,8 +46,9 @@ class MainActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
-            val dialog = DialogNewNote()
+            val dialog = DialogNewNote(adapter!!)
             dialog.show(supportFragmentManager, "123")
+//            adapter!!.notifyDataSetChanged()
         }
 
         mSerializer = JSONSerializer("NoteToSelf.json", applicationContext)
@@ -104,6 +105,11 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
+    fun updateNote() {
+        noteList!!.sortBy { note -> note.d_time }
+        adapter!!.notifyDataSetChanged()
+    }
+
     fun createNewNote(n: Note) {
         noteList!!.add(n)
         noteList!!.sortBy { note -> note.d_time }
@@ -111,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showNote(noteToShow: Int) {
-        val dialog = DialogShowNote()
+        val dialog = DialogShowNote(adapter!!)
 
         dialog.sendNoteSelected(noteList!![noteToShow])
         dialog.show(supportFragmentManager, "")
