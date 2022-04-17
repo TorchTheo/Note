@@ -20,9 +20,10 @@
 
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="324dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:singleLine="true"
             android:text="TextView"
             android:textColor="@color/color6"
             android:textSize="24sp" />
