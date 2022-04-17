@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         else
             Utils.fontScale = Utils.NORMAL_MOD_SCALE
 
+
+
         Log.i("info", "进入MainActivity的onCreate时fontScale为${Utils.fontScale}")
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -112,7 +114,6 @@ class MainActivity : AppCompatActivity() {
         Utils.setPendingIntent(pendingIntent)
 
         recyclerView!!.adapter = adapter
-
     }
 
     private fun createNotificationChannel() {
@@ -250,5 +251,4 @@ class MainActivity : AppCompatActivity() {
         Log.i("info", "onPause")
         this.saveNotes()
     }
-
 }

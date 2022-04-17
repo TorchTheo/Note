@@ -1,5 +1,8 @@
 package com.pang.notetoself
 
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ class NoteAdapter(
         internal var todo = view.findViewById<CheckBox>(R.id.todo)
         internal var des = view.findViewById<TextView>(R.id.briefDes)
         internal var time = view.findViewById<TextView>(R.id.briefTime)
+        internal var count = 0
 
         init {
             view.isClickable = true
@@ -48,6 +52,10 @@ class NoteAdapter(
         holder.des.text = note.des
         holder.time.text = note.time
         holder.todo.setOnCheckedChangeListener { compoundButton, isChecked ->
+
+            Log.i("info", "in BindViewHolder")
+            if(note.done != isChecked)
+                holder.count++
             note.done = isChecked
             // TODO: 更改复选框
             if (isChecked) {
@@ -58,6 +66,14 @@ class NoteAdapter(
             (noteList as ArrayList).sortWith(compareBy({ note -> note.done }, { note -> note.d_time }))
 
             note.refreshTask()
+            if(holder.count == 1) {
+//                mainActivity.recreate()
+                mainActivity.startActivity(Intent(mainActivity, MainActivity::class.java))
+                mainActivity.finish()
+                mainActivity.overridePendingTransition(0, 0)
+                holder.count--
+            }
+
         }
 
         holder.todo.isChecked = note.done

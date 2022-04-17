@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Note to Self</string>
+    <string name="app_name">Todo-Lists</string>
     <string name="action_settings">设置</string>
     <string name="action_add">添加笔记</string>
     <string name="title_hint">标题</string>
