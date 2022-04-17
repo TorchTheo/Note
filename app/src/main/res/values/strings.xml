@@ -38,4 +38,9 @@
     <string name="checkTitle" translatable="false">Title can\'t be empty!</string>
     <string name="checkTime" translatable="false">Time can\'t be empty!</string>
     <string name="add_todo">Add a new Todo</string>
+
+    <string name="show_dividers" translatable="false">Show Dividers</string>
+    <string name="caring_mode" translatable="false">Caring Mode</string>
+    <string name="dividers_description" translatable="false">Show lines between Todos</string>
+    <string name="caring_mode_description" translatable="false">Enlarge the letters for easier reading</string>
 </resources>
