@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.*
 import androidx.fragment.app.DialogFragment
+import com.pang.notetoself.utils.Utils
 
 class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -13,15 +14,18 @@ class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
         val dialogView = inflater.inflate(R.layout.dialog_new_note, null)
 
         val editTitle = dialogView.findViewById<EditText>(R.id.editTitle)
+        Utils.setSize(editTitle)
         val editDescription = dialogView.findViewById<EditText>(R.id.editDescription)
+        Utils.setSize(editDescription)
         val editTime = dialogView.findViewById<TextView>(R.id.editTime)
+        Utils.setSize(editTime)
 //        val checkBoxIdea = dialogView.findViewById<CheckBox>(R.id.checkBoxIdea)
 //        val checkBoxTodo = dialogView.findViewById<CheckBox>(R.id.checkBoxTodo)
 //        val checkBoxImportant = dialogView.findViewById<CheckBox>(R.id.checkBoxImportant)
         val btnCancel = dialogView.findViewById<ImageButton>(R.id.btnCancel)
         val btnNewOK = dialogView.findViewById<ImageButton>(R.id.btnNewOK)
 
-        builder.setView(dialogView).setMessage("Add a new note")
+        builder.setView(dialogView).setMessage(getString(R.string.add_todo))
 
         editTime.setOnFocusChangeListener { v, b ->
             if(b) {

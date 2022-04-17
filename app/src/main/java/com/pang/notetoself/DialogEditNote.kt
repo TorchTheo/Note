@@ -3,6 +3,7 @@ package com.pang.notetoself
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.EditText
 import android.widget.TextView
@@ -74,5 +75,8 @@ class DialogEditNote(val note: Note, val adapter: NoteAdapter): DialogFragment()
 
 
         return builder.create()
+    }
+
+    private fun init() {
     }
 }

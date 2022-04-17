@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.pang.notetoself.utils.Utils
 
 class NoteAdapter(
     private val mainActivity: MainActivity,
@@ -22,6 +23,11 @@ class NoteAdapter(
         init {
             view.isClickable = true
             view.setOnClickListener(this)
+
+            Utils.setSize(title)
+
+            Utils.setSize(des)
+            Utils.setSize(time)
 
         }
 
