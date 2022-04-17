@@ -1,5 +1,7 @@
 package com.pang.notetoself
 
+import android.app.PendingIntent
+import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.pang.notetoself.utils.Utils
@@ -26,19 +28,29 @@ class Note {
 
     private inner class notifierTask(val note: Note): TimerTask() {
         override fun run() {
+//            // Create an explicit intent for an Activity in your app
+//            val intent = Intent(Utils.appContext, Utils.appContext!!::class.java).apply {
+//                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            }
+//            val pendingIntent: PendingIntent = PendingIntent.getActivity(Utils.appContext, 0, intent, 0)
+
             var builder = NotificationCompat.Builder(Utils.getApplicationContext(), Utils.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("In the note:")
-                .setContentText(("This is a good day!"))
+                .setContentTitle(note.title)
+                .setContentText(note.des)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                // Set the intent that will fire when the user taps the notification
+//                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
 
             with(NotificationManagerCompat.from(Utils.getApplicationContext())) {
-                notify(Utils.getNotifyID(), builder.build())
+                notify(notifier_id, builder.build())
             }
         }
     }
 
     private var notifier_task: notifierTask = notifierTask(this)
+    private var notifier_id = 0
 
     @Throws(JSONException::class)
     constructor(jo: JSONObject) {
@@ -68,7 +80,8 @@ class Note {
     }
 
     fun createTask() {
-        if (!done) {
+        if (!done and Date().before(d_time)) {
+            notifier_id = Utils.getNotifyID()
             notifier_task = notifierTask(this)
             Timer().schedule(notifier_task, d_time)
         }
@@ -77,6 +90,8 @@ class Note {
     fun removeTask() {
         notifier_task.cancel()
         Timer().purge()
+
+        NotificationManagerCompat.from(Utils.getApplicationContext()).cancel(notifier_id)
     }
 
     fun refreshTask() {
