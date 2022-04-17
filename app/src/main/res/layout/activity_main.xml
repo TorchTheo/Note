@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color1"
-            app:popupTheme="@style/Theme.NoteToSelf.PopupOverlay" />
+            app:popupTheme="@style/Theme.NoteToSelf.PopupOverlay"
+            app:titleTextColor="@color/color6" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
