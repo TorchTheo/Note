@@ -44,14 +44,14 @@ class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
             if(editTitle.text.toString() != "") {
                 newNote.title = editTitle.text.toString()
             } else {
-                Toast.makeText(this.context, "Title can't be empty", Toast.LENGTH_LONG).show()
+                Toast.makeText(this.context, R.string.checkTitle, Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             if(editTime.text.toString() != "") {
                 newNote.time = editTime.text.toString()
                 newNote.d_time = newNote.timePattern.parse(newNote.time!!)
             } else {
-                Toast.makeText(this.context, "Time can't be empty", Toast.LENGTH_LONG).show()
+                Toast.makeText(this.context, R.string.checkTime, Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             newNote.des = editDescription.text.toString()

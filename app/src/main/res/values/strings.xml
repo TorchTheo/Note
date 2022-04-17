@@ -29,4 +29,12 @@
     <string name="delete_done">Todo has been delete successfully!</string>
     <string name="channel_name" translatable="false">TODO-List</string>
     <string name="channel_description" translatable="false">TODO-List\'s notification channel.</string>
+
+    <string name="add_description" translatable="false">Add a task with a title and deadline and optional description</string>
+    <string name="time_hint" translatable="false">Time</string>
+    <string name="GoBack" translatable="false">Back to previous page</string>
+    <string name="deleteTodo" translatable="false">Delete this Todo</string>
+    <string name="editTodo" translatable="false">Edit this Todo</string>
+    <string name="checkTitle" translatable="false">Title can\'t be empty!</string>
+    <string name="checkTime" translatable="false">Time can\'t be empty!</string>
 </resources>
