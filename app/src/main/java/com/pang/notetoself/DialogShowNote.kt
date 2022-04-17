@@ -53,6 +53,8 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
             AlertDialog.Builder(activity)
                 .setMessage(getString(R.string.delete_message))
                 .setPositiveButton(getString(R.string.yes)) {_, _ ->
+                    note!!.removeTask()
+
                     callingActivity!!.deleteNote(note!!)
                     if(isAdded) {
                         Toast.makeText(callingActivity, getString(R.string.delete_done), Toast.LENGTH_LONG).show()

@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.*
 import androidx.fragment.app.DialogFragment
-import java.sql.Time
 
 class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -56,6 +55,8 @@ class DialogNewNote(val adapter: NoteAdapter) : DialogFragment() {
                 return@setOnClickListener
             }
             newNote.des = editDescription.text.toString()
+
+            newNote.createTask()
 
             val callingActivity = activity as MainActivity?
 
