@@ -40,10 +40,19 @@ class MainActivity : AppCompatActivity() {
     private var adapter: NoteAdapter? = null
 
     private var showDividers: Boolean = false
+    private var c_font = 1.0f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val prefs = getSharedPreferences("Note to self", Context.MODE_PRIVATE)
+        if(prefs.getBoolean("caring_mod", false))
+            Utils.fontScale = Utils.CARING_MOD_SCALE
+        else
+            Utils.fontScale = Utils.NORMAL_MOD_SCALE
+
+        Log.i("info", "进入MainActivity的onCreate时fontScale为${Utils.fontScale}")
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -203,6 +212,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        Log.i("info", "onResume")
+
         super.onResume()
 
         val prefs = getSharedPreferences("Note to self", Context.MODE_PRIVATE)
@@ -216,6 +227,14 @@ class MainActivity : AppCompatActivity() {
         else
             if(recyclerView!!.itemDecorationCount > 0)
                 recyclerView!!.removeItemDecorationAt(0)
+
+        if(prefs.getBoolean("refresh", false)) {
+            val edit = prefs.edit()
+            edit.putBoolean("refresh", false)
+            edit.apply()
+            Log.i("info", "calling recreate, now the fontScale is ${Utils.fontScale}")
+            recreate()
+        }
     }
 
     private fun saveNotes() {
@@ -228,7 +247,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
+        Log.i("info", "onPause")
         this.saveNotes()
     }
 

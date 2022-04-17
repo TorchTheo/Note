@@ -24,4 +24,5 @@
     <string name="editTodo">编辑这个任务</string>
     <string name="checkTitle">标题不能为空！</string>
     <string name="checkTime">时间不能为空！</string>
+    <string name="add_todo">添加新任务</string>
 </resources>

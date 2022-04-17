@@ -37,4 +37,5 @@
     <string name="editTodo" translatable="false">Edit this Todo</string>
     <string name="checkTitle" translatable="false">Title can\'t be empty!</string>
     <string name="checkTime" translatable="false">Time can\'t be empty!</string>
+    <string name="add_todo">Add a new Todo</string>
 </resources>
