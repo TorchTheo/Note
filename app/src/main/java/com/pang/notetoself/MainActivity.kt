@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 //            adapter!!.notifyDataSetChanged()
         }
 
+        Utils.setApplicationContext(applicationContext)
         mSerializer = JSONSerializer("NoteToSelf.json", applicationContext)
 
         try {
@@ -80,7 +82,6 @@ class MainActivity : AppCompatActivity() {
 
 //        Toast.makeText(this, "onCreate called, showDividers is $showDividers", Toast.LENGTH_SHORT).show()
 
-        Utils.setApplicationContext(applicationContext)
         createNotificationChannel()
 
 //        var builder = NotificationCompat.Builder(this, Utils.CHANNEL_ID)
@@ -99,12 +100,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createNotificationChannel() {
+        // Also check permissions of notify
+        val notification = NotificationManagerCompat.from(this)
+        if (!notification.areNotificationsEnabled()) {
+            Toast.makeText(this, "No permission to send notifications.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            intent.putExtra(Settings.EXTRA_CHANNEL_ID, "1")
+            startActivity(intent)
+        }
+
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.channel_name)
             val descriptionText = getString(R.string.channel_description)
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(Utils.CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
@@ -112,6 +123,24 @@ class MainActivity : AppCompatActivity() {
             val notificationManager: NotificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
+
+            // check permissions
+            if (notificationManager.getNotificationChannel(Utils.CHANNEL_ID).importance < NotificationManager.IMPORTANCE_MIN){
+                Toast.makeText(this, "No permission to send notification by this channel.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                intent.putExtra(Settings.EXTRA_CHANNEL_ID, Utils.CHANNEL_ID)
+                startActivity(intent)
+            }
+
+            if (notificationManager.getNotificationChannel(Utils.CHANNEL_ID).importance <= NotificationManager.IMPORTANCE_DEFAULT) {//未开启
+                Toast.makeText(this, "Please give permission to suspend notice.", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                intent.putExtra(Settings.EXTRA_CHANNEL_ID, Utils.CHANNEL_ID)
+                startActivity(intent)
+            }
         }
     }
 
