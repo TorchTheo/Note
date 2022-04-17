@@ -11,7 +11,9 @@
         android:theme="@style/Theme.NoteToSelf">
         <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.NoteToSelf"
+            android:label="@string/settings_title"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
