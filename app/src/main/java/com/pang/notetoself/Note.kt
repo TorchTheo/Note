@@ -29,7 +29,7 @@ class Note {
     private inner class notifierTask(val note: Note): TimerTask() {
         override fun run() {
 //            // Create an explicit intent for an Activity in your app
-//            val intent = Intent(Utils.appContext, Utils.appContext!!::class.java).apply {
+//            val intent = Intent(Utils.appContext, MainActivity::class.java).apply {
 //                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 //            }
 //            val pendingIntent: PendingIntent = PendingIntent.getActivity(Utils.appContext, 0, intent, 0)
@@ -38,7 +38,8 @@ class Note {
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(note.title)
                 .setContentText(note.des)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
 //                // Set the intent that will fire when the user taps the notification
 //                .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
