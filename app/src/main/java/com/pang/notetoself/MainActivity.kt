@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 //            adapter!!.notifyDataSetChanged()
         }
 
+        Utils.setApplicationContext(applicationContext)
         mSerializer = JSONSerializer("NoteToSelf.json", applicationContext)
 
         try {
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 //        Toast.makeText(this, "onCreate called, showDividers is $showDividers", Toast.LENGTH_SHORT).show()
 
-        Utils.setApplicationContext(applicationContext)
+
         createNotificationChannel()
 
 //        var builder = NotificationCompat.Builder(this, Utils.CHANNEL_ID)
