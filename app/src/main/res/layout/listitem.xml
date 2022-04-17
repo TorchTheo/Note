@@ -36,12 +36,14 @@
         android:ellipsize="end"
         android:maxEms="15"
         android:singleLine="true"
+        android:textColor="@color/color6"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/briefTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp" />
+        android:layout_marginStart="48dp"
+        android:textColor="@color/color6" />
 
 </LinearLayout>
