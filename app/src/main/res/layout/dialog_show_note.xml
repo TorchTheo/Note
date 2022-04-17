@@ -23,6 +23,7 @@
         android:layout_width="310dp"
         android:layout_height="119dp"
         android:layout_marginTop="16dp"
+        android:background="@color/color1"
         android:scrollbars="vertical"
         android:scrollHorizontally="false"
         android:text="TextView"
