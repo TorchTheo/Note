@@ -29,8 +29,9 @@
     <TextView
         android:id="@+id/txtDescription"
         android:layout_width="310dp"
-        android:hint="@string/description_hint"
+        android:layout_height="wrap_content"
         android:background="@drawable/background7"
+        android:hint="@string/description_hint"
         android:scrollbars="vertical"
         android:scrollHorizontally="false"
         android:text="TextView"
@@ -38,7 +39,7 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showTime" />
 
@@ -56,13 +57,14 @@
     <TextView
         android:id="@+id/showTime"
         android:layout_width="310dp"
+        android:layout_height="wrap_content"
         android:hint="@string/time_hint"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
