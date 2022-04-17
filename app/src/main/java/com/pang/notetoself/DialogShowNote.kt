@@ -45,6 +45,7 @@ class DialogShowNote(val adapter: NoteAdapter) : DialogFragment() {
         val btnShowOK = dialogView.findViewById<ImageButton>(R.id.btnShowOk)
 
         builder.setView(dialogView)
+        txtTitle.isSelected = true
         btnShowOK.setOnClickListener{dismiss()}
         editNote.setOnClickListener {
             val dialog = DialogEditNote(note!!, adapter)
